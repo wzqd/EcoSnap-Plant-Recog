@@ -14,6 +14,7 @@
 		F41FD8AF2C394824001690A7 /* PlantRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8AE2C394824001690A7 /* PlantRecognitionTests.swift */; };
 		F41FD8B92C394824001690A7 /* PlantRecognitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8B82C394824001690A7 /* PlantRecognitionUITests.swift */; };
 		F41FD8BB2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8BA2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift */; };
+		F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		F41FD8B42C394824001690A7 /* PlantRecognitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantRecognitionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41FD8B82C394824001690A7 /* PlantRecognitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRecognitionUITests.swift; sourceTree = "<group>"; };
 		F41FD8BA2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRecognitionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F4518BF72C422ED30025F067 /* PlantRecognition.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantRecognition.entitlements; sourceTree = "<group>"; };
+		F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +97,12 @@
 		F41FD89C2C394823001690A7 /* PlantRecognition */ = {
 			isa = PBXGroup;
 			children = (
+				F4518BF72C422ED30025F067 /* PlantRecognition.entitlements */,
 				F41FD89D2C394823001690A7 /* PlantRecognitionApp.swift */,
 				F41FD89F2C394823001690A7 /* ContentView.swift */,
 				F41FD8A12C394824001690A7 /* Assets.xcassets */,
 				F41FD8A32C394824001690A7 /* Preview Content */,
+				F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */,
 			);
 			path = PlantRecognition;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F41FD8A02C394823001690A7 /* ContentView.swift in Sources */,
+				F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */,
 				F41FD89E2C394823001690A7 /* PlantRecognitionApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,12 +425,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantRecognition/PlantRecognition.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlantRecognition/Preview Content\"";
 				DEVELOPMENT_TEAM = F6BT4S3UKZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -448,12 +458,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PlantRecognition/PlantRecognition.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PlantRecognition/Preview Content\"";
 				DEVELOPMENT_TEAM = F6BT4S3UKZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
