@@ -9,14 +9,25 @@ import Foundation
 import HealthKit
 
 class HealthKitManager: ObservableObject {
+    
+    //bool var for caching
+    
     static let Instance = HealthKitManager()
 
-    var healthStore = HKHealthStore()
-
+    private var healthStore: HKHealthStore
+    
+    @Published var dailyStepCount: Int
+    @Published var weeklyStepCount: [Int:Int]
     
     init() {
-        authorizeHealthKit()
+        self.healthStore = HKHealthStore()
+        self.dailyStepCount = 0
+        self.weeklyStepCount = [:]
+                 for day in 1...7 {
+                     self.weeklyStepCount[day] = 0
+        }
     }
+    
 
 
     func authorizeHealthKit() {
@@ -29,7 +40,11 @@ class HealthKitManager: ObservableObject {
         }
     }
     
-    public func getDailyStepCount(afterCompletion: @escaping (Int) -> Void){
+    /// Get daily step count from health kit
+    /// - Parameter afterCompletion: call back function
+    public func getDailyStepCount(){
+        //TODO:check authorizationStatus and make a popup screen
+        
         guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {return}
 
         let now = Date()  //end time
@@ -49,22 +64,25 @@ class HealthKitManager: ObservableObject {
                 return
             }
             
-            
             let steps = Int(sum.doubleValue(for: HKUnit.count()))
             
-            afterCompletion(steps)
             
-//            DispatchQueue.main.async {
-////                self.stepCountToday = steps
+            DispatchQueue.main.async {
+                self.dailyStepCount = steps
 //                afterCompletion(steps) // Return the step count.
-//            }
+            }
         }
         
         healthStore.execute(query)
     }
     
     
-    func getWeeklyStepCount(afterCompletion: @escaping ([Int:Int]) -> Void) {
+    /// Get weekly step count from health kit
+    /// - Parameter afterCompletion: call back function
+    func getWeeklyStepCount() {
+        //TODO:check authorizationStatus and make a popup screen
+        
+        
         guard let stepCountType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {return}
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
@@ -101,19 +119,18 @@ class HealthKitManager: ObservableObject {
             }
             return
         }
-        
-        var thisWeekSteps: [Int: Int] = [1: 0, 2: 0, 3: 0,
-                                    4: 0, 5: 0, 6: 0, 7: 0]
 
         result.enumerateStatistics(from: startOfWeek, to: endOfWeek) { statistics, _ in
             if let quantity = statistics.sumQuantity() {
               let steps = Int(quantity.doubleValue(for: HKUnit.count()))
               let day = calendar.component(.weekday, from: statistics.startDate)
-              thisWeekSteps[day] = steps
+                self.weeklyStepCount[day] = steps
             }
           }
-            
-          afterCompletion(thisWeekSteps)
+        DispatchQueue.main.async {
+//            afterCompletion(self.weeklyStepCount)
+        }
+          
         }
 
         healthStore.execute(query)
