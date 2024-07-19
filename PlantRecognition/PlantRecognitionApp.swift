@@ -11,8 +11,8 @@ import SwiftUI
 struct PlantRecognitionApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            CameraView()
+            ContentView()
+//            CameraView()
         }
     }
 }

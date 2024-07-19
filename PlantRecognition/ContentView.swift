@@ -24,7 +24,7 @@ struct ContentView: View {
                         Image(systemName: "house.fill")
                     }.tag(1)
                 
-                Text("testView")
+                CameraView()
                     .tabItem {
                         
                         Text("Recognize")
@@ -54,6 +54,7 @@ struct stepsView: View{
     let weekDays = ["","Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     
     init(){
+        healthKitManager.authorizeHealthKit()
         healthKitManager.getDailyStepCount()
         healthKitManager.getWeeklyStepCount()
     }
@@ -61,8 +62,6 @@ struct stepsView: View{
     var body: some View{
         VStack {
             Spacer()
-            
-
             
             ZStack{
                 Circle()
