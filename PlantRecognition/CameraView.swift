@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import AVFoundation
 import CoreImage
+import os.log
 
 
 class FrameHandler: NSObject, ObservableObject {
@@ -18,6 +19,9 @@ class FrameHandler: NSObject, ObservableObject {
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private let context = CIContext()
 
+    let photoMgr = PhotoManager(smartAlbum: .smartAlbumUserLibrary)
+    
+    private var photoOutput: AVCapturePhotoOutput?
     
     override init() {
         super.init()
@@ -56,41 +60,69 @@ class FrameHandler: NSObject, ObservableObject {
     
     /// initialize capture session
     func setupCaptureSession() {
-        let videoOutput = AVCaptureVideoDataOutput()
-        
+
         guard permissionGranted else { return }
+        
+        
+        captureSession.beginConfiguration()
+        
+        
+        
+        let videoOutput = AVCaptureVideoDataOutput()
+        let photoOutput = AVCapturePhotoOutput()
+        captureSession.sessionPreset = AVCaptureSession.Preset.photo
+        
         guard let videoDevice = AVCaptureDevice.default(.builtInDualWideCamera,for: .video, position: .back) else { return }
+        
+        //set video input
         guard let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice) else { return }
-        guard captureSession.canAddInput(videoDeviceInput) else { return }
+        guard captureSession.canAddInput(videoDeviceInput) else {return }
         captureSession.addInput(videoDeviceInput)
         
+        //set video output
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
+        guard captureSession.canAddOutput(videoOutput) else {return}
         captureSession.addOutput(videoOutput)
         
-        videoOutput.connection(with: .video)?.videoRotationAngle = 90 //set frame angle to be right up
+        //set photo output
+        guard captureSession.canAddOutput(photoOutput)else{return}
+        captureSession.addOutput(photoOutput)
+        
+        self.photoOutput = photoOutput
+        
+        
+        
+        videoOutput
+            .connection(with: .video)? //set video connection
+            .videoRotationAngle = 90 //set frame angle to be right up
+        
+        
+        
+        captureSession.commitConfiguration()
     }
     
     
     /// take photo (photo processed in the delegate below)
     func takePhoto() {
-        let photoOutput = AVCapturePhotoOutput()
+        guard let photoOutput = self.photoOutput else { return }
+
         
         sessionQueue.async {
-        
+
             var photoSettings = AVCapturePhotoSettings()
 
             if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
                 photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
             }
             
-            photoSettings.maxPhotoDimensions = CMVideoDimensions(width: 520, height: 980)
+            
             if let previewPhotoPixelFormatType = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhotoPixelFormatType]
             }
             photoSettings.photoQualityPrioritization = .balanced
             
-            
             photoOutput.capturePhoto(with: photoSettings, delegate: self)
+
         }
     }
 }
@@ -129,7 +161,8 @@ extension FrameHandler: AVCapturePhotoCaptureDelegate {
             print(error)
             return
         }
-//        addToPhotoLibrary?(photo)  call back function here
+        
+        photoMgr.saveImage(photo)
     }
 }
 

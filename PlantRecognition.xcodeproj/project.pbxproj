@@ -16,6 +16,7 @@
 		F41FD8BB2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8BA2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift */; };
 		F49E2B882C48F6FE002189CA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E2B872C48F6FE002189CA /* CameraView.swift */; };
 		F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */; };
+		F4F96C6D2C4B76F0007100E3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F96C6C2C4B76F0007100E3 /* PhotoManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		F4518BF72C422ED30025F067 /* PlantRecognition.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantRecognition.entitlements; sourceTree = "<group>"; };
 		F49E2B872C48F6FE002189CA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		F4F96C6C2C4B76F0007100E3 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				F41FD89D2C394823001690A7 /* PlantRecognitionApp.swift */,
 				F41FD89F2C394823001690A7 /* ContentView.swift */,
 				F49E2B872C48F6FE002189CA /* CameraView.swift */,
+				F4F96C6C2C4B76F0007100E3 /* PhotoManager.swift */,
 				F41FD8A12C394824001690A7 /* Assets.xcassets */,
 				F41FD8A32C394824001690A7 /* Preview Content */,
 				F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */,
@@ -268,6 +271,7 @@
 				F41FD8A02C394823001690A7 /* ContentView.swift in Sources */,
 				F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */,
 				F41FD89E2C394823001690A7 /* PlantRecognitionApp.swift in Sources */,
+				F4F96C6D2C4B76F0007100E3 /* PhotoManager.swift in Sources */,
 				F49E2B882C48F6FE002189CA /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,6 +444,7 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to get your photo library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -474,6 +479,7 @@
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "We need to get your step count";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to get your step count";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need to get your photo library";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -11,7 +11,7 @@ import Charts
 
 struct ContentView: View {
     
-    @StateObject var healthKitManager = HealthKitManager.Instance
+    @StateObject static var healthKitManager = HealthKitManager.Instance
     
     var body: some View {
         
