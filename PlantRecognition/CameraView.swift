@@ -165,8 +165,9 @@ extension FrameHandler: AVCapturePhotoCaptureDelegate {
         
         photoMgr.saveImage(photo) //save photo to photo library
         
-        guard let imageData = photo.fileDataRepresentation() else { print("failed to change to imagedata")
-            return }
+        //pass image data to photo history
+//        guard let imageData = photo.fileDataRepresentation() else { print("failed to change to imagedata")
+//            return }
         
         self.isPhotoProcessed = true
         

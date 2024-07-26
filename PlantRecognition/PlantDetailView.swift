@@ -22,7 +22,7 @@ struct PlantDetailView: View{
             Spacer()
             
             Text("Plant Details")
-                .frame(width: 350,height: .infinity, alignment:.topLeading)
+                .frame(width: 300,height: .infinity, alignment:.topLeading)
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
