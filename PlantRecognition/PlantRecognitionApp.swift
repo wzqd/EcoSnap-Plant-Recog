@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct PlantRecognitionApp: App {
@@ -13,6 +14,12 @@ struct PlantRecognitionApp: App {
         WindowGroup {
             ContentView()
 //            CameraView()
+//            CaptureHistoryView()
         }
+        .modelContainer(for: Plant.self)
+    }
+    
+    init(){
+        print(URL.applicationSupportDirectory.path(percentEncoded: false))
     }
 }

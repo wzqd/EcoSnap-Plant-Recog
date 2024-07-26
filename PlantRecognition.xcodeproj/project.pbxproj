@@ -14,6 +14,10 @@
 		F41FD8AF2C394824001690A7 /* PlantRecognitionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8AE2C394824001690A7 /* PlantRecognitionTests.swift */; };
 		F41FD8B92C394824001690A7 /* PlantRecognitionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8B82C394824001690A7 /* PlantRecognitionUITests.swift */; };
 		F41FD8BB2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F41FD8BA2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift */; };
+		F42381542C521C560069B306 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381532C521C560069B306 /* DataModel.swift */; };
+		F42381562C5240350069B306 /* CaptureHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381552C5240350069B306 /* CaptureHistoryView.swift */; };
+		F42381582C5240530069B306 /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381572C5240530069B306 /* PlantDetailView.swift */; };
+		F423815A2C5240610069B306 /* HandBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381592C5240610069B306 /* HandBookView.swift */; };
 		F49E2B882C48F6FE002189CA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E2B872C48F6FE002189CA /* CameraView.swift */; };
 		F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */; };
 		F4F96C6D2C4B76F0007100E3 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F96C6C2C4B76F0007100E3 /* PhotoManager.swift */; };
@@ -47,6 +51,10 @@
 		F41FD8B42C394824001690A7 /* PlantRecognitionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantRecognitionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F41FD8B82C394824001690A7 /* PlantRecognitionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRecognitionUITests.swift; sourceTree = "<group>"; };
 		F41FD8BA2C394824001690A7 /* PlantRecognitionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRecognitionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F42381532C521C560069B306 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		F42381552C5240350069B306 /* CaptureHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureHistoryView.swift; sourceTree = "<group>"; };
+		F42381572C5240530069B306 /* PlantDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetailView.swift; sourceTree = "<group>"; };
+		F42381592C5240610069B306 /* HandBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandBookView.swift; sourceTree = "<group>"; };
 		F4518BF72C422ED30025F067 /* PlantRecognition.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantRecognition.entitlements; sourceTree = "<group>"; };
 		F49E2B872C48F6FE002189CA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -109,6 +117,10 @@
 				F41FD8A12C394824001690A7 /* Assets.xcassets */,
 				F41FD8A32C394824001690A7 /* Preview Content */,
 				F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */,
+				F42381532C521C560069B306 /* DataModel.swift */,
+				F42381552C5240350069B306 /* CaptureHistoryView.swift */,
+				F42381572C5240530069B306 /* PlantDetailView.swift */,
+				F42381592C5240610069B306 /* HandBookView.swift */,
 			);
 			path = PlantRecognition;
 			sourceTree = "<group>";
@@ -270,9 +282,13 @@
 			files = (
 				F41FD8A02C394823001690A7 /* ContentView.swift in Sources */,
 				F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */,
+				F42381562C5240350069B306 /* CaptureHistoryView.swift in Sources */,
+				F423815A2C5240610069B306 /* HandBookView.swift in Sources */,
 				F41FD89E2C394823001690A7 /* PlantRecognitionApp.swift in Sources */,
 				F4F96C6D2C4B76F0007100E3 /* PhotoManager.swift in Sources */,
+				F42381582C5240530069B306 /* PlantDetailView.swift in Sources */,
 				F49E2B882C48F6FE002189CA /* CameraView.swift in Sources */,
+				F42381542C521C560069B306 /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

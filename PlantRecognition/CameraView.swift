@@ -111,8 +111,8 @@ class FrameHandler: NSObject, ObservableObject {
 
             var photoSettings = AVCapturePhotoSettings()
 
-            if photoOutput.availablePhotoCodecTypes.contains(.hevc) {
-                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.hevc])
+            if photoOutput.availablePhotoCodecTypes.contains(.jpeg) {
+                photoSettings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
             }
             
             
@@ -162,7 +162,11 @@ extension FrameHandler: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        photoMgr.saveImage(photo)
+        photoMgr.saveImage(photo) //save photo to photo library
+        
+        
+        
+        
     }
 }
 

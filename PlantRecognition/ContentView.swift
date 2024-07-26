@@ -15,8 +15,8 @@ struct ContentView: View {
     
     var body: some View {
         
-
         ZStack {
+            
             TabView(selection: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Selection@*/.constant(1)/*@END_MENU_TOKEN@*/) {
                 stepsView()
                     .tabItem {
@@ -35,11 +35,11 @@ struct ContentView: View {
             }
             .ignoresSafeArea(edges: .all)
             
-            Rectangle() //border line
-                .fill(Color.gray)
-                .frame(height: 3)
-                .edgesIgnoringSafeArea(.horizontal) // Extend the line horizontally
-                .offset(y:341) // Adjust the offset to position the line above the tabs
+//            Rectangle() //border line
+//                .fill(Color.gray)
+//                .frame(height: 3)
+//                .edgesIgnoringSafeArea(.horizontal) // Extend the line horizontally
+//                .offset(y:341) // Adjust the offsete to position the line above the tabs
         }
         .ignoresSafeArea(edges:.all)
         
