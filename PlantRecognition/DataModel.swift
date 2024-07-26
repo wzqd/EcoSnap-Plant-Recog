@@ -53,7 +53,7 @@ class Plant{
         self.plantImageURLs = plantImageURLs
     }
     
-    var captureItem: CaptureItem?
+    var captureItem: [CaptureItem]?
     var handbookItem: HandbookItem?
     
 }

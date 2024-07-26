@@ -14,6 +14,7 @@ import os.log
 
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
+    @Published var isPhotoProcessed = false
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
@@ -164,6 +165,10 @@ extension FrameHandler: AVCapturePhotoCaptureDelegate {
         
         photoMgr.saveImage(photo) //save photo to photo library
         
+        guard let imageData = photo.fileDataRepresentation() else { print("failed to change to imagedata")
+            return }
+        
+        self.isPhotoProcessed = true
         
         
         
@@ -210,12 +215,12 @@ struct CameraView:View {
                 }
                 .overlay(alignment: .bottom) {
                     PhotoButtonsView(model: model)
-                        .frame(height: geometry.size.height * 0.15)
+                        .frame(height: geometry.size.height * 0.25)
                         .background(.black.opacity(0.75))
                 }
                 .overlay(alignment: .center)  {
                     Color.clear
-                        .frame(height: geometry.size.height * (1 - (0.15 * 2)))
+                        .frame(height: geometry.size.height * (1 - 0.15-0.25))
                 }
                 .background(.black)
         }
@@ -229,27 +234,38 @@ struct CameraView:View {
 struct PhotoButtonsView:View{
     @ObservedObject var model: FrameHandler
     
+    
     var body: some View{
         HStack(spacing: 60) {
+
             
             Spacer()
             
-            Button {
-                model.takePhoto()
-            } label: {
-                Label {
-                    Text("Take Photo")
-                } icon: {
-                    ZStack {
-                        Circle()
-                            .strokeBorder(.white, lineWidth: 3)
-                            .frame(width: 62, height: 62)
-                        Circle()
-                            .fill(.white)
-                            .frame(width: 50, height: 50)
+
+                
+                Button {
+                    model.takePhoto()
+                } label: {
+                    Label {
+                        Text("Take Photo")
+                    } icon: {
+                        ZStack {
+                            Circle()
+                                .strokeBorder(.white, lineWidth: 3)
+                                .frame(width: 62, height: 62)
+                            Circle()
+                                .fill(.white)
+                                .frame(width: 50, height: 50)
+                        }
                     }
                 }
-            }
+                .sheet(isPresented: $model.isPhotoProcessed, content: {
+                    PlantDetailView()
+                })
+            
+                           
+
+            
             
             Spacer()
         
