@@ -12,12 +12,13 @@ import CoreImage
 
 @Model
 class CaptureItem{
-    var captureDate: Date
-    var captureImage: Data
+    var captureDate: Date = Date.now
+    @Attribute(.externalStorage)
+    var captureImage: Data? = nil
     
     var plantItem: Plant? = nil
     
-    init(captureDate: Date = Date.now, captureImage: Data) {
+    init(captureDate: Date = Date.now, captureImage: Data? = nil) {
         self.captureDate = captureDate
         self.captureImage = captureImage
     }

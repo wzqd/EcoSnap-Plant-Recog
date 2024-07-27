@@ -15,6 +15,7 @@ import os.log
 class FrameHandler: NSObject, ObservableObject {
     @Published var frame: CGImage?
     @Published var isPhotoProcessed = false
+    @Published var captureImageData: Data?
     private var permissionGranted = false
     private let captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
@@ -166,8 +167,7 @@ extension FrameHandler: AVCapturePhotoCaptureDelegate {
         photoMgr.saveImage(photo) //save photo to photo library
         
         //pass image data to photo history
-//        guard let imageData = photo.fileDataRepresentation() else { print("failed to change to imagedata")
-//            return }
+        captureImageData = photo.fileDataRepresentation()
         
         self.isPhotoProcessed = true
         
@@ -261,7 +261,10 @@ struct PhotoButtonsView:View{
                     }
                 }
                 .sheet(isPresented: $model.isPhotoProcessed, content: {
-                    PlantDetailView()
+                    if model.captureImageData != nil{
+                        PlantDetailView(captureImageData:$model.captureImageData)
+                    }
+                    
                 })
             
                            

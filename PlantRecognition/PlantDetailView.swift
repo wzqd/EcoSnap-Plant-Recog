@@ -15,6 +15,7 @@ struct PlantDetailView: View{
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
+    @Binding var captureImageData:Data?
     @State var plant: Plant?
     
     var body: some View{
@@ -22,7 +23,7 @@ struct PlantDetailView: View{
             Spacer()
             
             Text("Plant Details")
-                .frame(width: 300,height: .infinity, alignment:.topLeading)
+                .frame(width: 400,height: 50, alignment:.topLeading)
                 .font(.largeTitle)
                 .fontWeight(.bold)
             
@@ -45,6 +46,18 @@ struct PlantDetailView: View{
                 }
                 Button{
                     //save history entry, plant entry and update unlock
+                    if let imageData = captureImageData{
+                        let history = CaptureItem(captureDate: Date.now, captureImage: imageData)
+                        modelContext.insert(history)
+                    }
+                    else{
+                        print("Data not prepared")
+                        let history = CaptureItem(captureDate: Date.now, captureImage: Data())
+                        modelContext.insert(history)
+                    }
+                    
+                    
+                    dismiss()
                 }label: {
                     Text("Save to History")
                         .font(.headline)
@@ -67,7 +80,7 @@ struct PlantDetailView: View{
 
 
 
-#Preview {
-    PlantDetailView()
-        .modelContainer(for: Plant.self, inMemory: true)
-}
+//#Preview {
+////    PlantDetailView()
+////        .modelContainer(for: Plant.self, inMemory: true)
+//}

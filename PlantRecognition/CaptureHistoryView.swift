@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 import SwiftData
 
-
 struct CaptureHistoryView: View{
     @Environment(\.modelContext) var modelContext
     @Query(sort: \CaptureItem.captureDate) private var captureItems: [CaptureItem]
@@ -30,10 +29,23 @@ struct CaptureHistoryView: View{
                                 Text(item.plantItem?.plantName ?? "unkown plant")
                             } label:{
                                 HStack(spacing: 10){
-                                    VStack(alignment: .leading){
-                                        Text(item.captureDate.formatted(date: .abbreviated, time: .complete))
+                                    if let photoData = item.captureImage,
+                                        let uiImage = UIImage(data: photoData) {
+                                        Image(uiImage: uiImage)
+                                            .resizable()
+                                            .scaledToFill()
+                                            .frame(width: 75, height: 75, alignment: .leading)
+                                            .clipShape(Circle())
+                                    } else {
+                                        Text("Image not available")
                                     }
+                                    
+                                    VStack(alignment: .leading, spacing: 10){
+                                        Text(item.captureDate.formatted(date: .abbreviated, time: .shortened))
+                                    }
+                                    
                                 }
+                                .listRowInsets(EdgeInsets(top: 5, leading: 0, bottom: 5, trailing: 0))
                             }
                             
                         }
@@ -44,6 +56,7 @@ struct CaptureHistoryView: View{
                             }
                         }
                     }
+                    
                     
                 }
             }

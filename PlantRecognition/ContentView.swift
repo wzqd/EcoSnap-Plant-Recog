@@ -32,6 +32,13 @@ struct ContentView: View {
                         Image(systemName: "camera.fill")
                             .ignoresSafeArea(edges: .all)
                     }.tag(2)
+                CaptureHistoryView()
+                    .tabItem {
+                        Text("History")
+                            .ignoresSafeArea(edges: .all)
+                        Image(systemName: "book.fill")
+                            .ignoresSafeArea(edges:.all)
+                    }.tag(3)
             }
             .ignoresSafeArea(edges: .all)
             
