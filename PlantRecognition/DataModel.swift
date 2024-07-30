@@ -14,11 +14,11 @@ import CoreImage
 class CaptureItem{
     var captureDate: Date = Date.now
     @Attribute(.externalStorage)
-    var captureImage: Data? = nil
+    var captureImage: Data
     
-    var plantItem: Plant? = nil
+    var plantItem: PlantItem? = nil
     
-    init(captureDate: Date = Date.now, captureImage: Data? = nil) {
+    init(captureDate: Date = Date.now, captureImage: Data) {
         self.captureDate = captureDate
         self.captureImage = captureImage
     }
@@ -27,19 +27,21 @@ class CaptureItem{
 @Model
 class HandbookItem{
     var unlockStatus: Bool = false
-    var unlockImageName: String? = nil
-    var plantItem: Plant? = nil
+    var unlockImageName: String = "plantImage"
+    var afterUnlockImageName: String
+    var plantItem: PlantItem? = nil
     
-    init(unlockStatus: Bool, unlockImageName: String? = nil) {
+    init(unlockStatus: Bool, unlockImageName: String = "plantImage", afterUnlockImageName:String) {
         self.unlockStatus = unlockStatus
         self.unlockImageName = unlockImageName
+        self.afterUnlockImageName = afterUnlockImageName
     }
     
     
 }
 
 @Model
-class Plant{
+class PlantItem{
     var plantName: String = ""
     var scientificName: String = ""
     var plantDescription: String = ""

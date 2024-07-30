@@ -27,10 +27,12 @@ struct CaptureHistoryView: View{
                         ForEach(captureItems){ item in
                             NavigationLink{
                                 Text(item.plantItem?.plantName ?? "unkown plant")
+                                Text(item.plantItem?.plantDescription ?? "unkown description")
+                                Text(item.plantItem?.plantImageURLs[0] ?? "random url")
                             } label:{
                                 HStack(spacing: 10){
-                                    if let photoData = item.captureImage,
-                                        let uiImage = UIImage(data: photoData) {
+                                    //turn data into image
+                                    if let uiImage = UIImage(data: item.captureImage) {
                                         Image(uiImage: uiImage)
                                             .resizable()
                                             .scaledToFill()

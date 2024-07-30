@@ -15,8 +15,10 @@ struct PlantDetailView: View{
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
+    @State var selectedTab:Int
+    
     @Binding var captureImageData:Data?
-    @State var plant: Plant?
+    @State var plant: PlantItem?
     
     var body: some View{
         VStack{
@@ -46,15 +48,20 @@ struct PlantDetailView: View{
                 }
                 Button{
                     //save history entry, plant entry and update unlock
+                    selectedTab = 4
                     if let imageData = captureImageData{
                         let history = CaptureItem(captureDate: Date.now, captureImage: imageData)
+                        let plant = PlantItem(plantName: "plant1", scientificName: "sldfkjaf", plantDescription: "this is a plant", captureLocation: "here", plantImageURLs: ["1","2"])
+                        history.plantItem = plant
+                        
                         modelContext.insert(history)
+                        
                     }
-                    else{
-                        print("Data not prepared")
-                        let history = CaptureItem(captureDate: Date.now, captureImage: Data())
-                        modelContext.insert(history)
-                    }
+//                    else{
+//                        print("Data not prepared")
+//                        let history = CaptureItem(captureDate: Date.now, captureImage: Data())
+//                        modelContext.insert(history)
+//                    }
                     
                     
                     dismiss()

@@ -16,7 +16,7 @@ struct PlantRecognitionApp: App {
 //            CameraView()
 //            CaptureHistoryView()
         }
-        .modelContainer(for: Plant.self)
+        .modelContainer(for: PlantItem.self)
     }
     
     init(){
