@@ -7,12 +7,13 @@
 
 import Foundation
 import HealthKit
+import SwiftUI
 
 class HealthKitManager: ObservableObject {
     
     //bool var for caching
     
-    static let Instance = HealthKitManager()
+    @ObservedObject static var Instance = HealthKitManager()
 
     private var healthStore: HKHealthStore
     

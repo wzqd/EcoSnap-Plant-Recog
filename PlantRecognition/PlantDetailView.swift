@@ -15,6 +15,8 @@ struct PlantDetailView: View{
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) var dismiss
     
+    let recognitionHandler = RecogniationHandler()
+    
     @State var selectedTab:Int
     
     @Binding var captureImageData:Data?
@@ -51,17 +53,13 @@ struct PlantDetailView: View{
                     selectedTab = 4
                     if let imageData = captureImageData{
                         let history = CaptureItem(captureDate: Date.now, captureImage: imageData)
-                        let plant = PlantItem(plantName: "plant1", scientificName: "sldfkjaf", plantDescription: "this is a plant", captureLocation: "here", plantImageURLs: ["1","2"])
-                        history.plantItem = plant
+                        recognitionHandler.recognizePlant(imageData: imageData)
+//                        let plant = PlantItem(plantName: "plant1", scientificName: "sldfkjaf", plantDescription: "this is a plant", captureLocation: "here", plantImageURLs: ["1","2"])
+//                        history.plantItem = plant
                         
                         modelContext.insert(history)
                         
                     }
-//                    else{
-//                        print("Data not prepared")
-//                        let history = CaptureItem(captureDate: Date.now, captureImage: Data())
-//                        modelContext.insert(history)
-//                    }
                     
                     
                     dismiss()

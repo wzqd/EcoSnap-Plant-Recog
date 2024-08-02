@@ -19,6 +19,7 @@
 		F42381582C5240530069B306 /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381572C5240530069B306 /* PlantDetailView.swift */; };
 		F423815A2C5240610069B306 /* HandBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42381592C5240610069B306 /* HandBookView.swift */; };
 		F49E2B882C48F6FE002189CA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49E2B872C48F6FE002189CA /* CameraView.swift */; };
+		F4A06E1B2C5BC2C6004C4D69 /* RecogniationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A06E1A2C5BC2C6004C4D69 /* RecogniationHandler.swift */; };
 		F4A145F12C589D9A00016243 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A145F02C589D9900016243 /* FrameView.swift */; };
 		F4A145F32C58A43400016243 /* StepsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4A145F22C58A43400016243 /* StepsView.swift */; };
 		F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */; };
@@ -59,6 +60,7 @@
 		F42381592C5240610069B306 /* HandBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandBookView.swift; sourceTree = "<group>"; };
 		F4518BF72C422ED30025F067 /* PlantRecognition.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlantRecognition.entitlements; sourceTree = "<group>"; };
 		F49E2B872C48F6FE002189CA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		F4A06E1A2C5BC2C6004C4D69 /* RecogniationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecogniationHandler.swift; sourceTree = "<group>"; };
 		F4A145F02C589D9900016243 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		F4A145F22C58A43400016243 /* StepsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsView.swift; sourceTree = "<group>"; };
 		F4ADA40F2C42BEAE007E0FD0 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				F42381592C5240610069B306 /* HandBookView.swift */,
 				F4A145F02C589D9900016243 /* FrameView.swift */,
 				F4A145F22C58A43400016243 /* StepsView.swift */,
+				F4A06E1A2C5BC2C6004C4D69 /* RecogniationHandler.swift */,
 			);
 			path = PlantRecognition;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				F4ADA4102C42BEAE007E0FD0 /* HealthKitManager.swift in Sources */,
 				F42381562C5240350069B306 /* CaptureHistoryView.swift in Sources */,
 				F423815A2C5240610069B306 /* HandBookView.swift in Sources */,
+				F4A06E1B2C5BC2C6004C4D69 /* RecogniationHandler.swift in Sources */,
 				F4A145F12C589D9A00016243 /* FrameView.swift in Sources */,
 				F41FD89E2C394823001690A7 /* PlantRecognitionApp.swift in Sources */,
 				F4F96C6D2C4B76F0007100E3 /* PhotoManager.swift in Sources */,
