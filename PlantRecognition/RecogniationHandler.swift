@@ -9,8 +9,18 @@ import Foundation
 import SwiftUI
 
 
-class RecogniationHandler{
+class RecogniationHandler: ObservableObject{
+    @Published var isLoading = false
+    
+    @Published var plantName: String = ""
+    @Published var isPlant: Bool = false
+    @Published var hasCommonName: Bool = false
+    @Published var plantCommonName: String = ""
+    
+    
     func recognizePlant(imageData: Data){
+        isLoading = true
+        print(isLoading)
         
         
         let parameters:[String: Any] = [
@@ -21,10 +31,6 @@ class RecogniationHandler{
         ]
        
         
-       
-//        let parameters = "{\n    \"images\": [\(imageData.base64EncodedString())],\n    \"similar_images\": true\n}"
-//        let postData = parameters.data(using: .utf8)
-        
         var request = URLRequest(url: URL(string: "https://plant.id/api/v2/identify")!,timeoutInterval: Double.infinity)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -32,7 +38,8 @@ class RecogniationHandler{
         
 
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
+            
             guard let data = data else {
                 print("error generated")
                 print(String(describing: error))
@@ -41,7 +48,7 @@ class RecogniationHandler{
             
             var result: PlantResult?
             
-            print(String(data: data, encoding: .utf8)!)
+//            print(String(data: data, encoding: .utf8)!)
             
             
             do{
@@ -58,8 +65,22 @@ class RecogniationHandler{
             
             print("print data")
             print(json.is_plant)
+            isPlant = json.is_plant
+            
             print(json.suggestions[0].plant_name)
-            print(json.suggestions[0].plant_details[0].common_names[0])
+            plantName = json.suggestions[0].plant_name
+            
+            if !json.suggestions[0].plant_details.common_names!.isEmpty{
+                print(json.suggestions[0].plant_details.common_names![0])
+                hasCommonName = true
+                plantCommonName = json.suggestions[0].plant_details.common_names![0]
+                
+            }
+            
+            
+            
+            isLoading = false
+            print(isLoading)
         }
         
         task.resume()
@@ -79,10 +100,10 @@ struct PlantResult: Codable{
 struct Suggestions:Codable{
     var id:Int
     var plant_name:String
-    var plant_details:[PlantDetails]
+    var plant_details:PlantDetails
 }
 
 struct PlantDetails:Codable{
-    var common_names:[String]
+    var common_names:[String]?
 }
 
