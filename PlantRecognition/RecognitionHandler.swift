@@ -63,24 +63,29 @@ class RecogniationHandler: ObservableObject{
             
             guard let json = result else{return}
             
-            print("print data")
-            print(json.is_plant)
-            isPlant = json.is_plant
-            
-            print(json.suggestions[0].plant_name)
-            plantName = json.suggestions[0].plant_name
-            
-            if !json.suggestions[0].plant_details.common_names!.isEmpty{
-                print(json.suggestions[0].plant_details.common_names![0])
-                hasCommonName = true
-                plantCommonName = json.suggestions[0].plant_details.common_names![0]
+            DispatchQueue.main.async {
+                print("print data")
+                print(json.is_plant)
+                self.isPlant = json.is_plant
                 
+                print(json.suggestions[0].plant_name)
+                self.plantName = json.suggestions[0].plant_name
+                
+                if !json.suggestions[0].plant_details.common_names!.isEmpty{
+                    print(json.suggestions[0].plant_details.common_names![0])
+                    self.hasCommonName = true
+                    self.plantCommonName = json.suggestions[0].plant_details.common_names![0]
+                    
+                }
+                
+                
+                
+                self.isLoading = false
+                print(self.isLoading)
             }
             
             
-            
-            isLoading = false
-            print(isLoading)
+
         }
         
         task.resume()
