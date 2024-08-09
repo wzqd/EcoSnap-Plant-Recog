@@ -1,5 +1,5 @@
 //
-//  RecogniationHandler.swift
+//  RecognitionHandler.swift
 //  PlantRecognition
 //
 //  Created by wzqd on 2024/8/1.
@@ -7,15 +7,18 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 
-class RecogniationHandler: ObservableObject{
+class RecognitionHandler: ObservableObject{
     @Published var isLoading = false
     
     @Published var plantName: String = ""
     @Published var isPlant: Bool = false
     @Published var hasCommonName: Bool = false
     @Published var plantCommonName: String = ""
+    
+    @Environment(\.modelContext) private var modelContext
     
     
     func recognizePlant(imageData: Data){
@@ -31,10 +34,12 @@ class RecogniationHandler: ObservableObject{
         ]
        
         
-        var request = URLRequest(url: URL(string: "https://plant.id/api/v2/identify")!,timeoutInterval: Double.infinity)
+        var request = URLRequest(url: URL(string: "https://plant.id/api/v2/identify")!,timeoutInterval: 60)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try! JSONSerialization.data(withJSONObject: parameters)
+        
+
+        request.httpBody = try? JSONSerialization.data(withJSONObject: parameters)
         
 
         
@@ -48,7 +53,7 @@ class RecogniationHandler: ObservableObject{
             
             var result: PlantResult?
             
-//            print(String(data: data, encoding: .utf8)!)
+            print(String(data: data, encoding: .utf8)!)
             
             
             do{
@@ -77,6 +82,8 @@ class RecogniationHandler: ObservableObject{
                     self.plantCommonName = json.suggestions[0].plant_details.common_names![0]
                     
                 }
+                
+                
                 
                 
                 
